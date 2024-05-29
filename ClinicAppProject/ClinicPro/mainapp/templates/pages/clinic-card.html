@@ -1,0 +1,189 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h2 class="m-0"></h2>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active">Clinic Card Details</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12 col-md-6 col-sm-3">
+        <!--messages-->
+        {% include 'messages.html' %}
+        <!--messages-->
+        <div class="card shadow">
+          <div class="card-header">
+            <h2>Clinic Card Details</h2>
+          </div>
+          <div class="card-body">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#staticBackdrop">
+             Add Clinic Card Details
+            </button>
+    
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Clinic Card Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.jina_la_clinic.label_tag }}
+                          {{ form.jina_la_clinic }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.jina_la_mama.label_tag }}
+                          {{ form.jina_la_mama }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.umri_wa_mama.label_tag }}
+                          {{ form.umri_wa_mama }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.elimu_ya_mama.label_tag }}
+                          {{ form.elimu_ya_mama }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.kazi_ya_mama.label_tag }}
+                          {{ form.kazi_ya_mama }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.urefu_wa_mama.label_tag }}
+                          {{ form.urefu_wa_mama }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.mimba_ya_ngapi.label_tag }}
+                          {{ form.mimba_ya_ngapi }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.amezaa_mara_ngapi.label_tag }}
+                          {{ form.amezaa_mara_ngapi }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.watoto_walio_hai.label_tag }}
+                          {{ form.watoto_walio_hai }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.jina_la_mume.label_tag }}
+                          {{ form.jina_la_mume }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.umri_wa_mume.label_tag }}
+                          {{ form.umri_wa_mume }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.elimu_ya_mume.label_tag }}
+                          {{ form.elimu_ya_mume }}
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.urefu_wa_mume.label_tag }}
+                          {{ form.urefu_wa_mume }}
+                        </div>
+                        <div class="form-group col-md-6">
+                          {{ form.kazi_ya_mume.label_tag }}
+                          {{ form.kazi_ya_mume }}
+                        </div>
+                    </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button type="button" class="btn btn-secondary form-control" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-info form-control">Save Details</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--table-->
+            <div class="table-responsive animate__animated animate__fadeIn">
+              <table id="mytable" class="table table-bordered table-striped">
+                <thead>
+                  <tr>
+                    <th>Clinic Name</th>
+                    <th>Mother's Name</th>
+                    <th>Mother's Age</th>
+                    <th>Mother's Education</th>
+                    <th>Mother's Occupation</th>
+                    <th>Mother's Height</th>
+                    <th>Number of Pregnancies</th>
+                    <th>Number of Deliveries</th>
+                    <th>Living Children</th>
+                    <th>Husband's Name</th>
+                    <th>Husband's Age</th>
+                    <th>Husband's Education</th>
+                    <th>Husband's Height</th>
+                    <th>Husband's Occupation</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for clinic_card in clinic_cards %}
+                  <tr>
+                    <td>{{ clinic_card.jina_la_clinic }}</td>
+                    <td>{{ clinic_card.jina_la_mama }}</td>
+                    <td>{{ clinic_card.umri_wa_mama }}</td>
+                    <td>{{ clinic_card.elimu_ya_mama }}</td>
+                    <td>{{ clinic_card.kazi_ya_mama }}</td>
+                    <td>{{ clinic_card.urefu_wa_mama }}</td>
+                    <td>{{ clinic_card.mimba_ya_ngapi }}</td>
+                    <td>{{ clinic_card.amezaa_mara_ngapi }}</td>
+                    <td>{{ clinic_card.watoto_walio_hai }}</td>
+                    <td>{{ clinic_card.jina_la_mume }}</td>
+                    <td>{{ clinic_card.umri_wa_mume }}</td>
+                    <td>{{ clinic_card.elimu_ya_mume }}</td>
+                    <td>{{ clinic_card.urefu_wa_mume }}</td>
+                    <td>{{ clinic_card.kazi_ya_mume }}</td>
+                    <td style="display:flex;">
+                        <a href="" class="btn btn-primary">Edit</a>
+                        <a href="" class="btn btn-danger ml-3">Delete</a>
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <!--table-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/. container-fluid -->
+</section>
+{% endblock %}

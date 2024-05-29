@@ -1,0 +1,13 @@
+user1: 12345
+admin:123
+parent1:12345
+username:12345
+
+
+class HealthList(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = HealthSerializer
+
+    def get_queryset(self):
+        user = self.request.user
+        return Health.objects.filter(user=user)

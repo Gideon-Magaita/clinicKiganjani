@@ -1,0 +1,96 @@
+{% extends 'pages/base.html' %}
+{% block content %}
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h2 class="m-0"></h2>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+          <li class="breadcrumb-item active">Edit Health Details</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-6 col-sm-3">
+        <!--messages-->
+        {% include 'messages.html' %}
+        <!--messages-->
+        <div class="card shadow">
+          <div class="card-header">
+            <h2>Edit Health Details</h2>
+          </div>
+          <div class="card-body">
+            
+          
+                    <form action="" method="post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.full_name.label_tag }}
+                          {{ form.full_name }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form.mothers_weight.label_tag }}
+                            {{ form.mothers_weight }}
+                          </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.pregnant_status.label_tag }}
+                          {{ form.pregnant_status }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form.pregnant_duration.label_tag }}
+                            {{ form.pregnant_duration }}
+                          </div>
+                    </div>
+
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          {{ form.blood_preasure.label_tag }}
+                          {{ form.blood_preasure }}
+                        </div>
+                        <div class="form-group col-md-6">
+                            {{ form.child_position.label_tag }}
+                            {{ form.child_position }}
+                          </div>
+                      </div>
+
+                      <div class="form-row"> 
+                        <div class="form-group col-md-6">
+                          {{ form.other.label_tag }}
+                          {{ form.other }}
+                        </div>
+                      </div>
+             
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button type="button" class="btn btn-secondary form-control" data-dismiss="modal">Close</button>
+                        </div>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-info form-control">Save Details</button>
+                        </div>
+                      </div>
+                    
+                    </form>
+                 
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--/. container-fluid -->
+</section>
+{% endblock %}
